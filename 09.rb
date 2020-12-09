@@ -1,4 +1,5 @@
 input = File.readlines('09.txt', chomp: true).map(&:to_i)
+# input = File.readlines('sample.txt', chomp: true).map(&:to_i)
 
 def two_sum(nums, expected)
   a = nums.sort
@@ -43,9 +44,30 @@ def part2(input, expected)
   return []
 end
 
+def part2_2(input, target)
+  return [] if input.length < 2
+  
+  i = 0
+  j = 1
+  loop do
+    sum = input[i..j].sum 
+    if sum < target
+      j += 1
+    elsif sum > target
+      i += 1
+    else sum == target
+      return input[i..j]
+    end
+
+    break if i >= j || j >= input.length
+  end
+  []
+end
+
 
 res1 = part1(input, 25)
-cont_nums = part2(input, res1)
+# cont_nums = part2(input, res1)
+cont_nums = part2_2(input, res1)
 res2 = cont_nums.max + cont_nums.min
 
 puts '*' * 10
