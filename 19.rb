@@ -66,7 +66,7 @@ def match(msg)
   (match_data[1].length / match_data[2].length) > (match_data[3].length / match_data[4].length)
 end
 
-res2 = messages.split("\n").first(10).count { |msg| match(msg) }
+res2 = messages.split("\n").count { |msg| match(msg) }
 
 puts '*' * 10
 puts res1
